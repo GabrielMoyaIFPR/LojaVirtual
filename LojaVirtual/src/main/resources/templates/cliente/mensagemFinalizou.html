@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+
+
+<title>Moya's</title>
+<body>
+
+
+
+	<!-- start banner Area -->
+	<div class="layout-content" layout:fragment="corpo">
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+		<div class="container">
+			<div class="col-md-6">
+
+				<img th:src="@{/karma/img/moya/logo.png}">
+
+
+				<h1>Compra Efetuada com Sucesso!</h1>
+				<a class="primary-btn" th:href="@{/cliente}">Voltar a Página
+					Inicial</a>
+				<a class="primary-btn" th:href="@{/finalizar/logout}">Sair</a>	
+			</div>
+		</div>
+
+		<div class="order_details_table">
+			<h2>Detalhes das Ultimas Compras</h2>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Cliente</th>
+							<th scope="col">Data
+							<th>
+							<th scope="col">Forma Pagamento
+							<th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="compra : ${compras}">
+							<td>
+								<p th:text="${compra.cliente.nome}"></p>
+							</td>
+							<td>
+								<p th:text="${#dates.format(compra.dataCompra, 'dd-MMM-yyyy')}"></p>
+							</td>
+							<td></td>
+							<td>
+								<p th:text="${compra.formaPagamento}"></p>
+							</td>
+							<td></td>
+							<td>
+								<p th:text="${compra.valorTotal}"></p>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Moya's</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/vendors/jqvmap/dist/jqvmap.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <link rel="stylesheet" href="/sufee-admin-dashboard-master/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+    <!-- Left Panel -->
+
+   <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/administrativo"><img src="" alt="Moya's"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/administrativo"> <i class="menu-icon fa fa-home"></i>Inicio </a>
+                    </li>
+             	 
+             	
+                
+             
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Listas</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a th:href="@{/administrativo/estado/listar}">Lista Estados</a></li>
+                            <li><i class="fa fa-table"></i><a th:href="@{/administrativo/cidade/listar}">Lista Cidades</a></li>
+                        	<li><i class="fa fa-table"></i><a th:href="@{/administrativo/funcionario/listar}">Lista Funcionários</a></li>
+                        	<li><i class="fa fa-table"></i><a th:href="@{/administrativo/papel/listar}">Lista Papeis</a></li>
+                        	<li><i class="fa fa-table"></i><a th:href="@{/administrativo/produto/listar}">Lista Produtos</a></li>
+                        	<li><i class="fa fa-table"></i><a th:href="@{/administrativo/categoriaProduto/listar}">Lista Categorias</a></li>
+                        	<li><i class="fa fa-table"></i><a th:href="@{/administrativo/permissoesFuncionario/listar}">Lista Permissões</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Cadastros</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/estado/cadastrar}">Cadastro Estados</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/cidade/cadastrar}">Cadastro Cidades</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/funcionario/cadastrar}">Cadastro Funcionários</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/papel/cadastrar}">Cadastro Papel</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/produto/cadastrar}">Cadastro Produtos</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/entrada/cadastrar}">Cadastro Entrada Produtos</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/categoriaProduto/cadastrar}">Cadastro Categoria</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a th:href="@{/administrativo/permissoesFuncionario/cadastrar}">Cadastro Permissões</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/sufee-admin-dashboard-master/images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Meu Perfil</a>
+
+                            <a class="nav-link" th:href="@{/logout}"><i class="fa fa-power-off"></i> Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <section class="layout-content" layout:fragment="corpo">
+        </section>
+   </div>
+    <!-- Right Panel -->
+
+    <script src="/sufee-admin-dashboard-master/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/sufee-admin-dashboard-master/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/sufee-admin-dashboard-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/sufee-admin-dashboard-master/assets/js/main.js"></script>
+
+
+    <script src="/sufee-admin-dashboard-master/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="/sufee-admin-dashboard-master/assets/js/dashboard.js"></script>
+    <script src="/sufee-admin-dashboard-master/assets/js/widgets.js"></script>
+    <script src="/sufee-admin-dashboard-master/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="/sufee-admin-dashboard-master/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="/sufee-admin-dashboard-master/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+	
+	<title>Moya's</title>
+	
+</head>
+
+<body>
+
+	
+<div class="layout-content" layout:fragment="corpo">
+<br><br><br><br><br><br><br><br>
+	 <section class="cart_area">
+        <div class="container">
+        	 <h4>Finalizar Compra</h4>
+        <h6 th:text="${cliente.nome}"></h6>
+        <h6 th:text="${cliente.email}"></h6>
+            <form th:action="@{/finalizar/confirmar}" method="post">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr >
+                                <th scope="col" >Foto</th>
+                                <th scope="col" >Descrição</th>
+                                <th scope="col" >Preço</th>
+                                <th scope="col" >Quantidade</th>
+                                <th scope="col" >Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr th:each="item : ${listaItens}" >
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img class="img-fluid" th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5  th:text="${item.produto.nome}">></h5>
+                                </td>
+                                <td>
+                                    <div >
+                                    <h5 th:text="${item.valorUnitario}"></h5>                                        
+                                    </div>
+                                </td>
+                                <td>
+                                    
+                                    
+                                    <div class="product_count" >
+                                        <input type="text" maxlength="12" th:value="${item.quantidade}" 
+                                            class="input-text qty">
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    <h5 th:text="${item.valorTotal}"></h5>
+                                </td>
+                                
+                                
+                            </tr>
+                            <tr class="bottom_button">
+                                <td>
+                                    <a class="gray_btn" th:href="@{/cliente/produto/lista}">Voltar</a>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5 th:text="${compra.valorTotal}"></h5>
+                                </td>
+                            </tr>
+                           
+                            <tr class="shipping_box">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5>Forma de Pagamento</h5>
+                                </td>
+                                <td>
+                                    <div class="shipping_box">
+                                        <select class="form-control" name="formaPagamento">
+                                        <option value=" ">Selecione</option>                                        
+                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                        <option value="Cartão de Débito">Cartão de Débito</option>
+                                        <option value="Boleto">Boleto</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <button class="primary-btn" >Confirmar Comprar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </form>
+        </div>
+    </section>
+	</div>
+
+
+</body>
+
+</html>

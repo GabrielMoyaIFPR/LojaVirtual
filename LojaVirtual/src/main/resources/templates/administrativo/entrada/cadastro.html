@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{administrativo/fragments/layout}">
+
+
+<head>
+<title>Moya's - Cadastro de Entrada de Produtos</title>
+
+</head>
+
+<body>
+
+	<div class="layout-content" layout:fragment="corpo">
+		<div class="content mt-3">
+			<div class="animated fadeIn">
+				<div class="col-lg-6">
+					<div class="card">
+						<div class="card-header">
+							<strong>Cadastro Entrada Produto</strong>
+						</div>
+
+						<form class="form-horizontal" th:object="${entrada}"
+							th:action="@{/administrativo/entrada/salvar}" method="POST"
+							style="margin: 10px">
+							<div class="form-group">
+								<fieldset>
+									<div class="form-group row">
+										<div class="alert alert-danger"
+											th:if="${#fields.hasAnyErrors()}">
+											<div th:each="detailedError : ${#fields.detailedErrors()}">
+												<span th:text="${detailedError.message}"></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-2">
+											<input type="hidden" class="form-control input-sm" id="id"
+												th:field="*{id}" readOnly="readonly" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label>Funcionario</label> <select th:field="*{funcionario}" class="form-control">
+												<option th:each="fun: ${listaFuncionarios}"
+													th:value="${fun.id}" th:text="${fun.nome}"></option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group ">
+										<div class="col-mb-6"
+											th:classappend="${#fields.hasErrors('observacao')}? 'has-error'">
+											<label>Observação</label> <input type="text"
+												class="form-control input-sm" th:field="*{observacao}"
+												autofocus="autofocus" placeholder="Observação"
+												maxlength="50" />
+										</div>
+									</div>
+
+
+									
+									<div class="form-group row" th:object="${entradaItens}">
+										<div class="col-md-6">
+											<div>
+												<label>Produto</label> <select class="form-control"
+													th:field="*{produto}">
+													<option th:each="prod: ${listaProdutos}"
+														th:value="${prod.id}" th:text="${prod.nome}"></option>
+												</select>
+											</div>
+										</div>
+										<br>
+										<div class="form-group ">
+											<div class="col-md-12">
+												<div class="control-label mb-6"
+													th:classappend="${#fields.hasErrors('valorProduto')}? 'has-error'">
+													<label>Valor Produto</label> <input type="number"
+														class="form-control input-sm" th:field="*{valorProduto}"
+														autofocus="autofocus" placeholder="Valor Produto"
+														maxlength="50" />
+												</div>
+												<div class="control-label mb-1"
+													th:classappend="${#fields.hasErrors('valorVenda')}? 'has-error'">
+													<label>Valor Venda</label> <input type="number"
+														class="form-control input-sm" th:field="*{valorVenda}"
+														autofocus="autofocus" placeholder="Valor Venda"
+														maxlength="50" />
+												</div>
+												<div class="control-label mb-6"
+													th:classappend="${#fields.hasErrors('quantidade')}? 'has-error'">
+													<label>Quantidade</label> <input type="number"
+														class="form-control input-sm" th:field="*{quantidade}"
+														autofocus="autofocus" placeholder="Quantidade"
+														maxlength="50" />
+												</div>
+												<button type="submit" id="add" name="acao" th:value="itens"
+													class="btn btn-sm btn-primary">ADD</button>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<div class="col-md-6">
+											<table
+												class="table table-sm table-striped table-hover table-bordered">
+												<thead>
+													<tr>
+														<th>Descrição</th>
+														<th>Quantidade</th>
+														<th>Valor Produto</th>
+														<th>Valor Venda</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="itens : ${listaEntradaItens}">
+														<td th:text="${itens.produto.nome}"></td>														
+														<td th:text="${itens.quantidade}"></td>
+														<td th:text="${itens.valorProduto}"></td>
+														<td th:text="${itens.valorVenda}"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="form-group ">
+								<button type="submit" class="btn btn-sm btn-primary" name="acao"
+									th:value="salvar">Salvar</button>
+								<a th:href="@{cadastrar}" class="btn btn-sm btn-default">Cancelar</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

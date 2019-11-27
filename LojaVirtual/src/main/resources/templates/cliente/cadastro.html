@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+	
+	<title>Moya's</title>
+	
+</head>
+
+<body>
+
+	
+<div class="layout-content" layout:fragment="corpo">
+<br><br><br><br><br><br><br><br>
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_form_inner ">
+						<h3>Criar uma conta</h3>
+						<form class="row login_form"  th:object="${cliente}"  th:action="@{/cliente/salvar}" method="post">
+							<div class="col-md-12 form-group" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+							    <input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Nome" maxlength="50"/>
+							</div>
+							<div class="col-md-12 form-group" th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
+							    <input type="text" class="form-control input-sm" th:field="*{cpf}" autofocus="autofocus" placeholder="CPF" maxlength="50"/>
+							</div>
+							<div class="container" th:classappend="${#fields.hasErrors('cidade')}? 'has-error'">
+                                        <select class="form-control" th:field="*{cidade}">
+                                        <option th:each="cid : ${cidades}" th:value="${cid.id}" th:text="${cid.nome}">Selecione</option>                                        
+                                        </select>
+                            </div>
+							<div class="col-md-12 form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+							    <input type="text" class="form-control input-sm" th:field="*{email}" autofocus="autofocus" placeholder="Email" maxlength="50"/>
+							</div>
+							<div class="col-md-12 form-group" th:classappend="${#fields.hasErrors('senha')}? 'has-error'">
+							    <input type="password" class="form-control input-sm" th:field="*{senha}" autofocus="autofocus" placeholder="Senha" maxlength="50"/>
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Criar Conta</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</div>
+
+
+</body>
+
+</html>

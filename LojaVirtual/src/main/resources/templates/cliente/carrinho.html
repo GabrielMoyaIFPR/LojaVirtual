@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+	
+	<title>Moya's</title>
+	
+</head>
+
+<body>
+
+	
+<div class="layout-content" layout:fragment="corpo">
+<br><br><br><br><br><br><br><br>
+	 <section class="cart_area">
+        <div class="container">
+        	 <h4>Carrinho</h4>
+        
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr >
+                                <th scope="col" >Foto</th>
+                                <th scope="col" >Descrição</th>
+                                <th scope="col" >Preço</th>
+                                <th scope="col" >Quantidade</th>
+                                <th scope="col" >Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr th:each="item : ${listaItens}" >
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img class="img-fluid" th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5  th:text="${item.produto.nome}">></h5>
+                                </td>
+                                <td>
+                                    <div >
+                                    <h5 th:text="${item.valorUnitario}"></h5>                                        
+                                    </div>
+                                </td>
+                                <td>
+                                    
+                                    
+                                    <div class="product_count" >
+                                        <input type="text" maxlength="12" th:value="${item.quantidade}" 
+                                            class="input-text qty">
+                                        <a class="increase items-count" th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${1})}"type="button"><i class="lnr lnr-chevron-up"></i></a>
+                                        <a class="increase items-count" th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id}, acao=${0})}"type="button"><i class="lnr lnr-chevron-down"></i></a>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    <h5 th:text="${item.valorTotal}"></h5>
+                                </td>
+                                <td>
+                                  <a class="increase items-count" th:href="@{/removerProduto/{id}(id=${item.produto.id})}"type="button"><i class="genric-btn disable circle">Remover</i></a>
+                                
+                                </td>
+                                
+                            </tr>
+                            <tr class="bottom_button">
+                                <td>
+                                    <a class="gray_btn" th:href="@{/cliente/produto/lista}">ADD</a>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5 th:text="${compra.valorTotal}"></h5>
+                                </td>
+                            </tr>
+                            <tr class="shipping_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5>Valores Tabelados de Frete</h5>
+                                </td>
+                                <td>
+                                    <div class="shipping_box">
+                                        <ul class="list">
+                                            <li><a href="#">PAC: R$5.00</a></li>
+                                            <li><a href="#">SEDEX: R$10.00</a></li>
+                                            <li class="active"><a href="#">Retirada no Local: Gratis</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="gray_btn" th:href="@{/cliente/produto/lista}">Continuar Comprando</a>
+                                        <a class="primary-btn" th:href="@{/finalizar}">Comprar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+	</div>
+
+
+</body>
+
+</html>

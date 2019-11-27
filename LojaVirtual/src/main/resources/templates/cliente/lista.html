@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+
+<head>
+
+	<title>Moya's</title>
+
+</head>
+
+<body>
+
+	<!-- End Header Area -->
+
+<div class="layout-content" layout:fragment="corpo">
+<br><br><br><br><br><br><br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3 col-lg-4 col-md-5">
+			
+			</div>
+			
+			
+				<!-- Start Best Seller -->
+				<section class="lattest-product-area pb-40 category-list">
+					<div class="row">
+						<!-- single product -->
+						
+						<div class="col-lg-4 col-md-6" th:each="prod : ${produtos}">
+							<div class="single-product">
+								<img class="img-fluid-home" th:src="@{/mostrarImagem/{imagem}(imagem=${prod.nomeImagem})}"  alt="" width="100">
+								<div class="product-details">
+									<h6 class="text-sm-center mt-2 mb-1" th:text="${prod.nome}"></h6>
+									<div class="price">
+										<h6 th:text="${prod.preco}" ></h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a th:href="@{/adicionarCarrinho/{id}(id=${prod.id})}" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">Comprar</p>
+										</a>
+																				
+										<a th:href="@{/carrinho}" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text" >Carrinho</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+				</section>
+			</div>
+		</div>
+		</div>
+</body>
+
+</html>
+
+
+

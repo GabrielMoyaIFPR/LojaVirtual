@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}">
+
+
+<head>
+    
+    <title>Moya's - Cadastro de Funcionário</title>
+    
+</head>
+
+<body>
+   <div class="layout-content" layout:fragment="corpo">
+	<div class="content mt-3">
+            <div class="animated fadeIn">
+                      <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"><strong>Cadastro Funcionário</strong></div>
+		
+			<form class="form-horizontal" th:object="${funcionario}" th:action="@{/administrativo/funcionario/salvar}" method="POST" style="margin: 10px">
+				<div class="form-group">
+ 					<fieldset>
+						<div class="form-group row">
+							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+								<div th:each="detailedError : ${#fields.detailedErrors()}">
+									<span th:text="${detailedError.message}"></span>
+								</div>
+							</div>
+						</div> 					
+						<div class="form-group row">
+						    <div class="col-md-1">
+						        <input type="hidden" class="form-control input-sm" id="id" th:field="*{id}" readOnly="readonly"/>
+						    </div>
+						 </div>
+						<div class="form-group ">                                                          
+							<div class="control-label mb-1" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+							    <label>Nome</label>
+							    <input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome do Funcionário" maxlength="50"/>
+							</div>
+						</div>	
+						
+						<div class="form-group ">                                                          
+							<div class="control-label mb-1" th:classappend="${#fields.hasErrors('rg')}? 'has-error'">
+							    <label>RG</label>
+							    <input type="text" class="form-control input-sm" th:field="*{rg}" autofocus="autofocus" placeholder="Informe o rg do funcionario" maxlength="9" required="required"/>
+							</div>
+						</div>	
+						<div class="form-group ">                                                          
+							<div class="control-label mb-1" th:classappend="${#fields.hasErrors('salario')}? 'has-error'">
+							    <label>Salário</label>
+                                <input type="text" class="form-control input-sm" th:field="*{salario}" autofocus="autofocus" placeholder="Informe o salario do funcionario" maxlength="50" required="required"/>
+							</div>
+						</div>		
+						<div>
+							<label>Cidade</label> <select th:field="*{cidade}">
+								<option class="form-control input-sm" th:each="cid: ${cidades}" 
+								th:value="${cid.id}" th:text="${cid.nome}"></option>
+							</select>
+						</div>		
+						<div class="form-group ">                                                          
+							<div class="control-label mb-1" th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
+							    <label>Endereço</label>
+                                <input type="text" class="form-control input-sm" th:field="*{endereco}" autofocus="autofocus" placeholder="Informe o endereço do funcionario" maxlength="50" required="required"/>
+							</div>
+						</div>	
+						<div class="form-group ">                                                          
+							<div class="control-label mb-1" th:classappend="${#fields.hasErrors('numero')}? 'has-error'">
+							    <label>Número</label>
+                                <input type="text" class="form-control input-sm" th:field="*{numero}" autofocus="autofocus" placeholder="Informe o número da casa" maxlength="50" required="required"/>							</div>
+						</div>
+						<div class="form-group ">                                                          
+						<div class="control-label mb-1" th:classappend="${#fields.hasErrors('cep')}? 'has-error'">
+							    <label>CEP</label>
+                                <input type="text" class="form-control input-sm" th:field="*{cep}" autofocus="autofocus" placeholder="Informe o CEP da rua" maxlength="50" required="required"/>
+						</div>
+						</div>
+						<div class="form-group ">                                                          
+						<div class="control-label mb-1" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+							    <label>Email</label>
+                                <input type="text" class="form-control input-sm" th:field="*{email}" name="email" autofocus="autofocus" placeholder="Informe o email" maxlength="50" required="required"/>
+						</div>
+						</div>
+						<div class="form-group ">                                                          
+						<div class="control-label mb-1" th:classappend="${#fields.hasErrors('senha')}? 'has-error'">
+							    <label>Senha</label>
+                                <input type="password" class="form-control input-sm" th:field="*{senha}" name="senha" autofocus="autofocus" placeholder="Informe a Senha" maxlength="50" required="required"/>
+						</div>
+						</div>									
+					</fieldset>
+				</div>
+				<div class="form-group ">
+					<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+					<a th:href="@{cadastrar}" class="btn btn-sm btn-default">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</body>
+</html>

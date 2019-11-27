@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+	
+	<title>Moya's</title>
+	
+</head>
+
+<body>
+
+	
+<div class="layout-content" layout:fragment="corpo">
+<br><br><br><br><br><br><br><br>
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" th:src="@{/karma/img/login.jpg}" alt="">
+						<div class="hover">
+							<h4>Novo no nosso site?</h4>
+							<p>Venha aproveitar as nossas ofertas e nossos produtos de qualidade!!</p>
+							<a class="primary-btn" th:href="@{/cliente/cadastrar}">Criar uma conta</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>Fazer Login</h3>
+						<form class="row login_form" th:action="@{/finalizar/login}" method="post">
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Email">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Senha" >
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Log In</button>
+								<a href="#">Esqueceu a Senha?</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</div>
+
+
+</body>
+
+</html>
